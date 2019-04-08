@@ -2,11 +2,13 @@ let map;
 let divSquare = '<div id="s$coord" class="square $color"></div>';
 let divFigure = '<div id="f$coord" class="figure">$figure</div>';
 let isDragging = false;
+let isFlipped = false;
 
 $(function () {
     start();
     $('.buttonNew').click(newFiguresPHP);
-    setInterval('showFiguresPHP()', 3000);
+    $('.buttonFlip').click(flipBoard);
+    setInterval('showFiguresPHP()', 2000);
 });
 
 // Функция которая будет выполнять все в самом начале
@@ -15,6 +17,12 @@ function start() {
     addSquares();
     //showFigures('rnbqkbnrpppppppp11111111111111111111111111111111PPPPPPPPRNBQKBNR');
     showFiguresPHP();
+}
+
+// Функция для переворота доски наоборот
+function flipBoard() {
+    isFlipped = !isFlipped;
+    start();
 }
 
 // Функция для переноса переноса шахматных фигур
@@ -54,7 +62,7 @@ function addSquares() {
     $('.board').html('');
     for (let coord = 0; coord < 64; coord++) {
         $('.board').append(divSquare
-            .replace('$coord', coord)
+            .replace('$coord', isFlipped ? 63 - coord: coord)
             .replace('$color',
             isBlackSquareAt(coord) ? 'black' : 'white'));
         setDroppable();
