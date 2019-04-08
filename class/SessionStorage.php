@@ -16,11 +16,12 @@ class SessionStorage implements Storage
 
     /**
      * SessionStorage constructor.
-     * @param $name
+     * @param string $name
      */
-    function __construct($name)
+    public function __construct($name)
     {
         session_start();
+        $this->name = $name;
     }
 
     /**
@@ -29,8 +30,8 @@ class SessionStorage implements Storage
      */
     public function save($figures)
     {
-
-        $_SESSION[$name] = $figures;
+        
+        $_SESSION[$this->name] = $figures;
     }
 
     /**
@@ -39,6 +40,6 @@ class SessionStorage implements Storage
     function load()
     {
 
-        return $_SESSION[$name];
+        return $_SESSION[$this->name];
     }
 }
