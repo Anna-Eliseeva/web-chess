@@ -12,8 +12,8 @@
     <title>Онлайн шахматы</title>
 </head>
 <body>
-<div class="board">
-
-</div>
+<div class="board"></div>
+<input class="buttonNew" type="button" value="New">
+<input class="buttonFlip" type="button" value="Flip">
 </body>
 </html>
