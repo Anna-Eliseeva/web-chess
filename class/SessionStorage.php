@@ -38,7 +38,7 @@ class SessionStorage implements Storage
      */
     function load()
     {
-        
+
         return $_SESSION[$name];
     }
 }
